@@ -21,6 +21,14 @@
 
 
 
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake /home/avisek/nixos";
+      nrb = "sudo nixos-rebuild boot --flake /home/avisek/nixos";
+    };
+  };
+
   # https://nixos.wiki/wiki/Git#Configuration
   programs.git = {
     enable = true;
