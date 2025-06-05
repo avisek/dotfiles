@@ -26,6 +26,8 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake /home/avisek/nixos";
       nrb = "sudo nixos-rebuild boot --flake /home/avisek/nixos";
+      nfu = "nix flake update --flake /home/avisek/nixos";
+      ngc = "sudo nix-collect-garbage -d && sudo nixos-rebuild boot";
     };
   };
 
