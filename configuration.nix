@@ -122,6 +122,9 @@
     libnotify
     google-chrome
     vscode-fhs
+
+    nixfmt-rfc-style # Official formatter for Nix language code
+    # alejandra # Alternative formatter with improved readability
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
