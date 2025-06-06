@@ -27,5 +27,11 @@
           ];
         };
       };
+
+      # Enables `nix fmt` command
+      # https://nix.dev/manual/nix/2.25/command-ref/new-cli/nix3-fmt#examples
+      # formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+      # https://github.com/NixOS/nixfmt?tab=readme-ov-file#nix-fmt-experimental
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
     };
 }
