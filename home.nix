@@ -19,8 +19,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-
-
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -34,7 +32,14 @@
   # https://nixos.wiki/wiki/Git#Configuration
   programs.git = {
     enable = true;
-    userName  = "Avisek Das";
+    userName = "Avisek Das";
     userEmail = "avisekdas555@gmail.com";
+  };
+
+  # https://nixos.wiki/wiki/GNOME#Dark_mode
+  # https://www.reddit.com/r/NixOS/comments/18hdool/comment/kd8m9v7/
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 }
