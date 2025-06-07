@@ -37,8 +37,15 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Display Manager.
-  services.xserver.displayManager.gdm.enable = true;
+  # Enable Ly display manager.
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      bigclock = true;
+      clock = "%c";
+      hide_borders = true;
+    };
+  };
 
   # Enabling hyprlnd on NixOS
   programs.hyprland.enable = true;
@@ -125,6 +132,8 @@
 
     nixfmt-rfc-style # Official formatter for Nix language code
     # alejandra # Alternative formatter with improved readability
+    
+    cmatrix # Terminal animation
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
