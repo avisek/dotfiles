@@ -29,6 +29,19 @@
     };
   };
 
+  # https://nixos.wiki/wiki/Zsh#Example_Configuration
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake /home/avisek/nixos";
+      nrb = "sudo nixos-rebuild boot --flake /home/avisek/nixos";
+      nfu = "nix flake update --flake /home/avisek/nixos";
+      ngc = "sudo nix-collect-garbage -d && nrb";
+    };
+  };
+
   # https://nixos.wiki/wiki/Git#Configuration
   programs.git = {
     enable = true;
