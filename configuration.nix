@@ -86,16 +86,7 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
   # Enable sound with pipewire.
-  # services.pulseaudio.enable = false;
   # https://nixos.wiki/wiki/PipeWire
   security.rtkit.enable = true;
   services.pipewire = {
@@ -104,7 +95,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    # jack.enable = true;
 
     # https://mynixos.com/nixpkgs/option/services.pipewire.wireplumber.extraConfig
     # https://wiki.archlinux.org/title/WirePlumber
@@ -154,7 +145,7 @@
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    # media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -200,10 +191,8 @@
 
     nixfmt-rfc-style # Official formatter for Nix language code
     # alejandra # Alternative formatter with improved readability
-    
-    cmatrix # Terminal animation
 
-    # pulseaudio
+    cmatrix # Terminal animation
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
