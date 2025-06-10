@@ -31,7 +31,9 @@ lsblk
 
 mount /dev/sda2 /mnt
 
-mount --mkdir /dev/sda1 /mnt/boot
+mkdir -p /mnt/boot
+
+mount -o umask=077 /dev/sda1 /mnt/boot
 
 # Not sure what it does
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars
