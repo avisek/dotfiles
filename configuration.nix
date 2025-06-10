@@ -77,7 +77,7 @@
   # xdg.portal.enable = true;
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # Enable GVfs for better file system integration.
+  # Enable GVfs for better file system integration with GTK apps.
   # https://nixos.wiki/wiki/Nautilus#GVfs
   services.gvfs.enable = true;
 
