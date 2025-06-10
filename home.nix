@@ -24,8 +24,10 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake /home/avisek/nixos";
       nrb = "sudo nixos-rebuild boot --flake /home/avisek/nixos";
+      nrbr = "nrb && reboot";
       nfu = "nix flake update --flake /home/avisek/nixos";
       ngc = "sudo nix-collect-garbage -d && nrb";
+      ngcr = "ngc && reboot";
     };
   };
 
@@ -37,8 +39,10 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake /home/avisek/nixos";
       nrb = "sudo nixos-rebuild boot --flake /home/avisek/nixos";
+      nrbr = "nrb && reboot";
       nfu = "nix flake update --flake /home/avisek/nixos";
       ngc = "sudo nix-collect-garbage -d && nrb";
+      ngcr = "ngc && reboot";
     };
   };
 
