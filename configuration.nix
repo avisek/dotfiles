@@ -94,6 +94,69 @@
   #   pulse.enable = true;
   # };
 
+  # Enable sound with pipewire.
+  # services.pulseaudio.enable = false;
+  # https://nixos.wiki/wiki/PipeWire
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # https://mynixos.com/nixpkgs/option/services.pipewire.wireplumber.extraConfig
+    # https://wiki.archlinux.org/title/WirePlumber
+    wireplumber.extraConfig = {
+      "device-rename" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.pci-0000_0c_00.4.analog-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "Speakers";
+              };
+            };
+          }
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.pci-0000_0a_00.1.hdmi-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "HDMI";
+              };
+            };
+          }
+          {
+            matches = [
+              {
+                "node.name" = "alsa_output.pci-0000_0c_00.4.iec958-stereo";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "S/PDIF";
+                "node.disabled" = true;
+              };
+            };
+          }
+        ];
+      };
+    };
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -139,6 +202,8 @@
     # alejandra # Alternative formatter with improved readability
     
     cmatrix # Terminal animation
+
+    # pulseaudio
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
