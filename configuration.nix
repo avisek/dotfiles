@@ -190,7 +190,7 @@
     vscode-fhs
 
     nixfmt-rfc-style # Official formatter for Nix language code
-    # alejandra # Alternative formatter with improved readability
+    alejandra # Alternative formatter with improved readability
 
     cmatrix # Terminal animation
   ];
