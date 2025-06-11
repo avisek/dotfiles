@@ -36,6 +36,13 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  # Enable Nvidia proprietary drivers.
+  # https://wiki.nixos.org/wiki/NVIDIA
+  # https://nixos.wiki/wiki/nvidia
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.open = false;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
