@@ -36,61 +36,8 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable Nvidia proprietary drivers.
-  # https://wiki.nixos.org/wiki/NVIDIA
-  # https://nixos.wiki/wiki/nvidia
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia.open = false;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable Ly display manager.
-  services.displayManager.ly = {
-    enable = true;
-    settings = {
-      # animation = "matrix";
-      bigclock = true;
-      clock = "%c";
-      hide_borders = true;
-    };
-  };
-
-  # Enabling hyprlnd on NixOS
-  programs.hyprland.enable = true;
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
-
-  # environment.sessionVariables = {
-  #   # # If your cursor becomes invisible
-  #   # WLR_NO_HARDWARE_CURSORS = "1";
-
-  #   # Hint electron apps to use wayland
-  #   NIXOS_OZONE_WL = "1";
-  # };
-
-  # hardware = {
-  #   # Opengl
-  #   opengl.enable = true;
-
-  #   # Most wayland compositors need this
-  #   nvidia.modesetting.enable = true;
-  # };
-
-  # # XDG portal
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # Enable GVfs for better file system integration with GTK apps.
-  # https://nixos.wiki/wiki/Nautilus#GVfs
-  services.gvfs.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.libinput.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -157,8 +104,39 @@
     # media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+  # Enable Nvidia proprietary drivers.
+  # https://wiki.nixos.org/wiki/NVIDIA
+  # https://nixos.wiki/wiki/nvidia
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.open = false;
+
+  # Enable Ly display manager.
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      # animation = "matrix";
+      bigclock = true;
+      clock = "%c";
+      hide_borders = true;
+    };
+  };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Configure keymap in X11
+  # services.xserver.xkb.layout = "us";
+  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+
+  # Enable Hyprland.
+  programs.hyprland.enable = true;
+  # Optional, hint Electron apps to use Wayland:
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  # Enable GVfs for better file system integration with GTK apps.
+  # https://nixos.wiki/wiki/Nautilus#GVfs
+  services.gvfs.enable = true;
 
   # https://nixos.wiki/wiki/Command_Shell
   programs.zsh.enable = true;
