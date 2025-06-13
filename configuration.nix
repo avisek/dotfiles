@@ -36,8 +36,20 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+  services.libinput = {
+    # Enable touchpad support (enabled default in most desktopManager).
+    enable = true;
+
+    mouse = {
+      # Disable mouse acceleration
+      accelProfile = "flat";
+    };
+
+    touchpad = {
+      # Disable touchpad acceleration
+      accelProfile = "flat";
+    };
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
