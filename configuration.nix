@@ -144,7 +144,7 @@
   # Enable Hyprland.
   programs.hyprland.enable = true;
   # Optional, hint Electron apps to use Wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable GVfs for better file system integration with GTK apps.
   # https://nixos.wiki/wiki/Nautilus#GVfs
@@ -187,10 +187,14 @@
     libnotify
     google-chrome
     vscode-fhs
+    code-cursor
 
     nixfmt-rfc-style # Official formatter for Nix language code
     alejandra # Alternative formatter with improved readability
 
+    pfetch-rs
+    fastfetch
+    btop-cuda # System monitor
     cmatrix # Terminal animation
   ];
 
