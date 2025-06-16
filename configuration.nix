@@ -126,11 +126,17 @@
   # Enable Ly display manager.
   services.displayManager.ly = {
     enable = true;
+    # https://github.com/fufexan/ly/blob/master/docs/configuration.md
     settings = {
       # animation = "matrix";
-      bigclock = true;
+      asterisk = "\\#";
+      auth_fails = 5;
+      bigclock = "en";
+      brightness_down_key = "null";
+      brightness_up_key = "null";
       clock = "%c";
       hide_borders = true;
+      hide_version_string = true;
     };
   };
 
