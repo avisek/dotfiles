@@ -40,11 +40,11 @@
     # Enable touchpad support (enabled default in most desktopManager).
     enable = true;
 
+    # https://wiki.nixos.org/wiki/Xorg#Disabling_touchpad_and_mouse_accelerations
     mouse = {
       # Disable mouse acceleration
       accelProfile = "flat";
     };
-
     touchpad = {
       # Disable touchpad acceleration
       accelProfile = "flat";
@@ -148,9 +148,30 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable Hyprland.
+  # https://wiki.nixos.org/wiki/Hyprland#Installation
+  # https://wiki.hypr.land/Nix/Hyprland-on-NixOS
   programs.hyprland.enable = true;
   # Optional, hint Electron apps to use Wayland:
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # https://wiki.nixos.org/wiki/GNOME#dconf
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [
+      {
+        lockAll = true; # prevents overriding
+        settings = {
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+            gtk-theme = "Adwaita";
+            icon-theme = "Flat-Remix-Red-Dark";
+            font-name = "Noto Sans Medium 11";
+            document-font-name = "Noto Sans Medium 11";
+            monospace-font-name = "Noto Sans Mono Medium 11";
+          };
+        };
+      }
+    ];
+  };
 
   # Enable GVfs for better file system integration with GTK apps.
   # https://nixos.wiki/wiki/Nautilus#GVfs
