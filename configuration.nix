@@ -152,7 +152,7 @@
   # https://wiki.hypr.land/Nix/Hyprland-on-NixOS
   programs.hyprland.enable = true;
   # Optional, hint Electron apps to use Wayland:
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # https://wiki.nixos.org/wiki/GNOME#dconf
   programs.dconf = {
     enable = true;
