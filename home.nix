@@ -63,12 +63,23 @@
   # };
 
   # https://wiki.nixos.org/wiki/Hyprland#Theme_Support
+  # home.pointerCursor = {
+  #   package = pkgs.bibata-cursors;
+  #   name = "Bibata-Modern-Classic";
+  #   size = 16;
+  #   gtk.enable = true;
+  # };
+  # home.pointerCursor = {
+  #   package = pkgs.phinger-cursors;
+  #   name = "phinger-cursors-dark";
+  #   size = 32;
+  #   gtk.enable = true;
+  # };
   home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
+    package = pkgs.apple-cursor;
+    name = "macOS";
+    size = 24;
     gtk.enable = true;
-    # x11.enable = true;
   };
 
   # gtk = {
