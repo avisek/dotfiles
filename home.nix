@@ -23,14 +23,6 @@
 
   programs.bash = {
     enable = true;
-    shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake /home/avisek/nixos";
-      nrb = "sudo nixos-rebuild boot --flake /home/avisek/nixos";
-      nrbr = "nrb && reboot";
-      nfu = "nix flake update --flake /home/avisek/nixos";
-      ngc = "sudo nix-collect-garbage -d && nrb";
-      ngcr = "ngc && reboot";
-    };
   };
 
   # https://nixos.wiki/wiki/Zsh#Example_Configuration
@@ -38,14 +30,6 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake /home/avisek/nixos";
-      nrb = "sudo nixos-rebuild boot --flake /home/avisek/nixos";
-      nrbr = "nrb && reboot";
-      nfu = "nix flake update --flake /home/avisek/nixos";
-      ngc = "sudo nix-collect-garbage -d && nrb";
-      ngcr = "ngc && reboot";
-    };
   };
 
   # https://nixos.wiki/wiki/Git#Configuration

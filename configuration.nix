@@ -269,4 +269,13 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  environment.shellAliases = {
+    nrs = "sudo nixos-rebuild switch --flake ~/nixos";
+    nrb = "sudo nixos-rebuild boot --flake ~/nixos";
+    nrbr = "nrb && reboot";
+    nfu = "nix flake update --flake ~/nixos";
+    ngc = "sudo nix-collect-garbage -d && nrb";
+    ngcr = "ngc && reboot";
+  };
 }
