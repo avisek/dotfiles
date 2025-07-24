@@ -221,7 +221,8 @@
 
     pfetch-rs
     fastfetch
-    btop-cuda # System monitor
+    # btop-cuda # System monitor - with Nvidia GPU support
+    btop-rocm # System monitor - with AMD GPU support
     cmatrix # Terminal animation
   ];
 
