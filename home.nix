@@ -21,17 +21,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.bash = {
-    enable = true;
-  };
-
-  # https://nixos.wiki/wiki/Zsh#Example_Configuration
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-
   # https://nixos.wiki/wiki/Git#Configuration
   programs.git = {
     enable = true;

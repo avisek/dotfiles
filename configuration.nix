@@ -177,8 +177,13 @@
   # https://nixos.wiki/wiki/Nautilus#GVfs
   services.gvfs.enable = true;
 
+  # https://nixos.wiki/wiki/Zsh#Example_Configuration
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
   # https://nixos.wiki/wiki/Command_Shell
-  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
