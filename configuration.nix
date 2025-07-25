@@ -182,6 +182,12 @@
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+    shellInit = ''
+      # Disable zsh's newuser startup script that prompts you to create
+      # a ~/.z* file if missing
+      # https://unix.stackexchange.com/a/57926
+      zsh-newuser-install() { :; }
+    '';
   };
   # https://nixos.wiki/wiki/Command_Shell
   users.defaultUserShell = pkgs.zsh;
