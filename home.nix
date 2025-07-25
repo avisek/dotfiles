@@ -36,6 +36,7 @@
   # };
 
   # https://wiki.nixos.org/wiki/Hyprland#Theme_Support
+  # TODO: Do this from system config: https://github.com/NixOS/nixpkgs/issues/22652#issuecomment-927163685
   # home.pointerCursor = {
   #   package = pkgs.bibata-cursors;
   #   name = "Bibata-Modern-Classic";
