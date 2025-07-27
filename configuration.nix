@@ -123,22 +123,32 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.open = false;
 
-  # Enable Ly display manager.
-  services.displayManager.ly = {
-    enable = true;
-    # https://github.com/fufexan/ly/blob/master/docs/configuration.md
-    settings = {
-      # animation = "matrix";
-      asterisk = "\\#";
-      auth_fails = 5;
-      bigclock = "en";
-      brightness_down_key = "null";
-      brightness_up_key = "null";
-      clock = "%c";
-      hide_borders = true;
-      hide_version_string = true;
-    };
-  };
+  # # Enable Ly display manager.
+  # services.displayManager.ly = {
+  #   enable = true;
+  #   # https://github.com/fufexan/ly/blob/master/docs/configuration.md
+  #   settings = {
+  #     # animation = "matrix";
+  #     asterisk = "\\#";
+  #     auth_fails = 5;
+  #     bigclock = "en";
+  #     brightness_down_key = "null";
+  #     brightness_up_key = "null";
+  #     clock = "%c";
+  #     hide_borders = true;
+  #     hide_version_string = true;
+  #   };
+  # };
+  # # https://github.com/rharish101/ReGreet#nixos
+  # programs.regreet = {
+  #   enable = true;
+  #   # https://github.com/rharish101/ReGreet/blob/main/regreet.sample.toml
+  #   settings = {
+  #     GTK = {
+  #       application_prefer_dark_theme = true;
+  #     };
+  #   };
+  # };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
