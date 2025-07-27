@@ -123,32 +123,15 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.open = false;
 
-  # # Enable Ly display manager.
-  # services.displayManager.ly = {
-  #   enable = true;
-  #   # https://github.com/fufexan/ly/blob/master/docs/configuration.md
-  #   settings = {
-  #     # animation = "matrix";
-  #     asterisk = "\\#";
-  #     auth_fails = 5;
-  #     bigclock = "en";
-  #     brightness_down_key = "null";
-  #     brightness_up_key = "null";
-  #     clock = "%c";
-  #     hide_borders = true;
-  #     hide_version_string = true;
-  #   };
-  # };
-  # # https://github.com/rharish101/ReGreet#nixos
-  # programs.regreet = {
-  #   enable = true;
-  #   # https://github.com/rharish101/ReGreet/blob/main/regreet.sample.toml
-  #   settings = {
-  #     GTK = {
-  #       application_prefer_dark_theme = true;
-  #     };
-  #   };
-  # };
+  # Dead simple TTY-based auto-login setup for Hyprland
+  services.xserver.displayManager.lightdm.enable = false; # Disable default display manager (ensure no other DMs are enabled)
+  services.getty.autologinUser = "avisek"; # Auto-login user on boot
+  environment.loginShellInit = ''
+    # Launch Hyprland on TTY1, return to TTY when exiting
+    if [ "$(tty)" = "/dev/tty1" ]; then
+      Hyprland # Use `exec Hyprland` to auto-restart on exit/crash instead
+    fi
+  '';
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
