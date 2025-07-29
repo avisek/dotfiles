@@ -123,13 +123,23 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.open = false;
 
-  # Dead simple TTY-based auto-login setup for Hyprland
-  services.xserver.displayManager.lightdm.enable = false; # Disable default display manager (ensure no other DMs are enabled)
+  # # Dead simple TTY-based auto-login setup for Hyprland
+  # services.xserver.displayManager.lightdm.enable = false; # Disable default display manager (ensure no other DMs are enabled)
+  # services.getty.autologinUser = "avisek"; # Auto-login user on boot
+  # environment.loginShellInit = ''
+  #   # Launch Hyprland on TTY1, return to TTY when exiting
+  #   if [ "$(tty)" = "/dev/tty1" ]; then
+  #     Hyprland # Use `exec Hyprland` to auto-restart on exit/crash instead
+  #   fi
+  # '';
+
+  # TTY-based UWSM-managed auto-login setup for Hyprland
+  services.xserver.displayManager.lightdm.enable = false; # Disable default display manager
   services.getty.autologinUser = "avisek"; # Auto-login user on boot
   environment.loginShellInit = ''
-    # Launch Hyprland on TTY1, return to TTY when exiting
-    if [ "$(tty)" = "/dev/tty1" ]; then
-      Hyprland # Use `exec Hyprland` to auto-restart on exit/crash instead
+    # https://wiki.hypr.land/Useful-Utilities/Systemd-start/#in-tty
+    if uwsm check may-start; then
+      exec uwsm start hyprland-uwsm.desktop
     fi
   '';
 
@@ -143,7 +153,10 @@
   # Enable Hyprland.
   # https://wiki.nixos.org/wiki/Hyprland#Installation
   # https://wiki.hypr.land/Nix/Hyprland-on-NixOS
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
   # Optional, hint Electron apps to use Wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # https://wiki.nixos.org/wiki/GNOME#dconf
