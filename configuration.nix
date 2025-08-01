@@ -198,6 +198,23 @@
   # https://nixos.wiki/wiki/Command_Shell
   users.defaultUserShell = pkgs.zsh;
 
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  networking.firewall.trustedInterfaces = ["virbr0"];
+  systemd.services.libvirt-default-network = {
+    description = "Start libvirt default network";
+    after = ["libvirtd.service"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.libvirt}/bin/virsh net-start default";
+      ExecStop = "${pkgs.libvirt}/bin/virsh net-destroy default";
+      User = "root";
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.avisek = {
     isNormalUser = true;
@@ -205,6 +222,7 @@
     extraGroups = [
       "networkmanager"
       "wheel" # Enable ‘sudo’ for the user.
+      "libvirtd"
     ];
     packages = with pkgs; [
       # tree
