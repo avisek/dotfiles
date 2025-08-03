@@ -198,8 +198,11 @@
   # https://nixos.wiki/wiki/Command_Shell
   users.defaultUserShell = pkgs.zsh;
 
+  # Virt-manager
   programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["avisek"];
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [virtiofsd];
   virtualisation.spiceUSBRedirection.enable = true;
   networking.firewall.trustedInterfaces = ["virbr0"];
   systemd.services.libvirt-default-network = {
@@ -222,7 +225,6 @@
     extraGroups = [
       "networkmanager"
       "wheel" # Enable ‘sudo’ for the user.
-      "libvirtd"
     ];
     packages = with pkgs; [
       # tree
