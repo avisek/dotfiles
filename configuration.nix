@@ -162,7 +162,7 @@
   # https://wiki.nixos.org/wiki/GNOME#dconf
   programs.dconf = {
     enable = true;
-    profiles.user.databases = [
+    profiles.user.databases = with lib.gvariant; [
       {
         lockAll = true; # prevents overriding
         settings = {
@@ -173,6 +173,28 @@
             font-name = "Noto Sans Medium 9";
             document-font-name = "Noto Sans Medium 9";
             monospace-font-name = "Noto Sans Mono Medium 9";
+          };
+          # Virt-manager
+          "org/virt-manager/virt-manager" = {
+            xmleditor-enabled = true;
+          };
+          "org/virt-manager/virt-manager/confirm" = {
+            delete-storage = false;
+          };
+          "org/virt-manager/virt-manager/console" = {
+            resize-guest = mkInt32 1;
+            scaling = mkInt32 0;
+          };
+          "org/virt-manager/virt-manager/stats" = {
+            enable-memory-poll = true;
+            enable-disk-poll = true;
+            enable-net-poll = true;
+          };
+          "org/virt-manager/virt-manager/vmlist-fields" = {
+            host-cpu-usage = true;
+            memory-usage = true;
+            disk-usage = true;
+            network-traffic = true;
           };
         };
       }
