@@ -43,12 +43,12 @@
   };
 
   # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-  services.gvfs.enable = true;
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -60,7 +60,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -84,12 +84,17 @@
     description = "Avisek Das";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      kdePackages.kate
     #  thunderbird
     ];
   };
 
-  # # Install firefox.
-  # programs.firefox.enable = true;
+  # Enable automatic login for the user.
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "avisek";
+
+  # Install firefox.
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -99,16 +104,6 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    gedit
-    waybar
-    hyprpaper
-    dunst
-    libnotify
-    kitty
-    fish
-    wofi
-    google-chrome
-    vscode-fhs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -136,39 +131,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
-
-
-
-
-  # # Enable VMware tools for virtual machines
-  # virtualisation.vmware.guest.enable = true;
-
-  # Enabling hyprlnd on NixOS
-  programs.hyprland.enable = true;
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
-
-  # environment.sessionVariables = {
-  #   # # If your cursor becomes invisible
-  #   # WLR_NO_HARDWARE_CURSORS = "1";
-
-  #   # Hint electron apps to use wayland
-  #   NIXOS_OZONE_WL = "1";
-  # };
-
-  # hardware = {
-  #   # Opengl
-  #   opengl.enable = true;
-
-  #   # Most wayland compositors need this
-  #   nvidia.modesetting.enable = true;
-  # };
-  
-  # # XDG portal
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 }
