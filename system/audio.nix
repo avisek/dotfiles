@@ -8,42 +8,17 @@
     pulse.enable = true;
 
     wireplumber.extraConfig = {
-      "device-rename" = {
+      "disable-broken-onboard-audio" = {
         "monitor.alsa.rules" = [
           {
             matches = [
               {
-                "node.name" = "alsa_output.pci-0000_0c_00.4.analog-stereo";
+                "device.name" = "alsa_card.pci-0000_0c_00.4";
               }
             ];
             actions = {
               update-props = {
-                "node.description" = "Speakers";
-              };
-            };
-          }
-          {
-            matches = [
-              {
-                "node.name" = "alsa_output.pci-0000_0a_00.1.hdmi-stereo";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.description" = "HDMI";
-              };
-            };
-          }
-          {
-            matches = [
-              {
-                "node.name" = "alsa_output.pci-0000_0c_00.4.iec958-stereo";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.description" = "S/PDIF";
-                "node.disabled" = true;
+                "device.disabled" = true;
               };
             };
           }
