@@ -18,7 +18,6 @@
     git
     tree
     bat
-    chromium
     google-chrome
     vscode-fhs
     code-cursor
