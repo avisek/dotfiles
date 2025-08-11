@@ -11,11 +11,11 @@
   users.defaultUserShell = pkgs.zsh;
 
   environment.shellAliases = {
-    nrs = "sudo nixos-rebuild switch --flake ~/nixos --impure";
-    nrt = "sudo nixos-rebuild test --flake ~/nixos --impure";
-    nrb = "sudo nixos-rebuild boot --flake ~/nixos --impure";
+    nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles --impure";
+    nrt = "sudo nixos-rebuild test --flake ~/.dotfiles --impure";
+    nrb = "sudo nixos-rebuild boot --flake ~/.dotfiles --impure";
     nrbr = "nrb && reboot";
-    nfu = "nix flake update --flake ~/nixos --impure";
+    nfu = "nix flake update --flake ~/.dotfiles --impure";
     ngc = "sudo nix-collect-garbage -d && nrb";
     ngcr = "ngc && reboot";
   };
