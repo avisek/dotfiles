@@ -4,12 +4,14 @@
   ...
 }: {
   # nix
+  documentation.nixos.enable = false;
+  nixpkgs.config.allowUnfree = true;
+
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     auto-optimise-store = true;
     warn-dirty = false;
   };
-  nixpkgs.config.allowUnfree = true;
 
   # packages
   environment.systemPackages = with pkgs; [
