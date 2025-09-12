@@ -10,8 +10,9 @@
     ./audio.nix
     ./nvidia.nix
     ./sh.nix
-    ./hypr.nix
     ./virt.nix
+    ./hypr.nix
+    # ./nautilus.nix
   ];
 
   users.users.${cfg.user} = {
