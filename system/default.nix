@@ -6,7 +6,7 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./system.nix
-    ./libinput.nix
+    ./maccel.nix
     ./audio.nix
     ./nvidia.nix
     ./sh.nix

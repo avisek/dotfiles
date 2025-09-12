@@ -31,5 +31,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    maccel.url = "github:Gnarus-G/maccel";
   };
 }
